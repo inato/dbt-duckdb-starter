@@ -1,6 +1,6 @@
-with source as (
+with sites as (
 
-  select * from {{ ref('raw_sites') }}
+  select * from {{ ref('stg_sites') }}
 
 )
 
@@ -11,7 +11,7 @@ with source as (
     , siteName
     , countryCode
     , country_name
-  from source
+  from sites
 
 )
 

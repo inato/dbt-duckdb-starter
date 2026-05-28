@@ -1,11 +1,14 @@
 version: 2
 
 models:
-  - name: staging_sites
+  - name: stg_sites
     description: Staged research sites data from the raw sites seed.
     columns:
       - name: site_id
         description: Unique identifier for the research site (e.g. si_0001).
+        tests:
+          - unique
+          - not_null
       - name: siteName
         description: Full name of the research center (e.g. "Smith LLC Research Center").
       - name: countryCode

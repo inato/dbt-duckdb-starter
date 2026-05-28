@@ -1,0 +1,14 @@
+version: 2
+
+exposures:
+  - name: sponsor_funnel_report
+    description: |
+      Funnel performance for sponsors: patients processed, reviewed and enrolled, broken down by trial and country.
+      Used for embedded dashboard for sponsors.
+    type: report
+    maturity: low
+    owner:
+      name: Product team
+      email: product-team@company.com 
+    depends_on:
+      - ref('exposure_sanofi_funnel')
