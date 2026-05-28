@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: mart_sponsor_funnel
+    description: |
+      Sponsor funnel analysis model that aggregates patient trial matches grouped by sponsor, country, and trial.
+      Provides key metrics on patient progression through the trial workflow including processed, reviewed, and enrolled counts.
+    
+    columns:
+      - name: sponsor_name
+        description: Name of the pharmaceutical sponsor running the trial
+        data_type: varchar
+      
+      - name: country_name
+        description: Country where the trial site is located
+        data_type: varchar
+      
+      - name: trialName
+        description: Name of the clinical trial
+        data_type: varchar
+      
+      - name: trial_id
+        description: Unique identifier for the trial
+        data_type: varchar
+        tests:
+          - not_null
+      
+      - name: sponsor_id
+        description: Unique identifier for the sponsor
+        data_type: varchar
+        tests:
+          - not_null
+      
+      - name: indication
+        description: Medical indication or condition the trial addresses
+        data_type: varchar
+      
+      - name: phase
+        description: Clinical trial phase (Phase 1, 2, 3, 4)
+        data_type: varchar
+      
+      - name: status
+        description: Current status of the trial (Active, Completed, etc.)
+        data_type: varchar
+      
+      - name: total_patients
+        description: Total count of unique patients matched to this sponsor-country-trial combination
+        data_type: bigint
+        tests:
+          - not_null
+      
+      - name: patients_processed
+        description: Number of patients whose trial match was processed (processed_at is not null)
+        data_type: bigint
+      
+      - name: patients_reviewed
+        description: Number of patients whose trial match was reviewed (reviewed_at is not null)
+        data_type: bigint
+      
+      - name: patients_enrolled
+        description: Number of patients who were enrolled in the trial (enrolled_at is not null)
+        data_type: bigint
